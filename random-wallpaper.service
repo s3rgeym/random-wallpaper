@@ -3,5 +3,5 @@ Description=random wallpaper service
 
 [Service]
 Type=oneshot
-Environment=DISPLAY=:0
+EnvironmentFile=/etc/random-wallpaper.conf
 ExecStart=/usr/bin/random-wallpaper
