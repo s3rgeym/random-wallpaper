@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 FILE=${FILE:-/tmp/random-wallpaper}
 current_resolution=$(xdpyinfo | grep -oP 'dimensions:\s+\K\S+')
-api_url="https://wallhaven.cc/api/v1/search?sorting=random&resolutions=$current_resolution"
+echo $current_resolution
+# 110 это без людей, так как часто вываливаются телки в ниглеже
+api_url="https://wallhaven.cc/api/v1/search?categories=110&purity=110&sorting=random&resolutions=$current_resolution"
+echo $api_url
 download_url=$(curl -L "$api_url" | jq -r '.data[0].path')
+echo $download_url
 curl -L "$download_url" -o "$FILE"
 gsettings set org.gnome.desktop.background picture-uri "file://$FILE"
