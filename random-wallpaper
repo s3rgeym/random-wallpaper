@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+FILE=${FILE:-/tmp/random-wallpaper}
+current_resolution=$(xdpyinfo | grep -oP 'dimensions:\s+\K\S+')
+api_url="https://wallhaven.cc/api/v1/search?sorting=random&resolutions=$current_resolution"
+download_url=$(curl -L "$api_url" | jq -r '.data[0].path')
+curl -L "$download_url" -o "$FILE"
+gsettings set org.gnome.desktop.background picture-uri "file://$FILE"

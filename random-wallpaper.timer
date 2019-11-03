@@ -1,0 +1,9 @@
+[Unit]
+Description=random wallpaper timer
+
+[Timer]
+OnBootSec=0s
+OnCalendar=*:0/1
+
+[Install]
+WantedBy=timers.target
