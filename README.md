@@ -2,7 +2,7 @@
 
 ```zsh
 $ yay -S random-wallpaper
-$ sudo systemctl start random-wallpaper.timer && sudo systemctl enable random-wallpaper.timer
+$ sudo systemctl enable --now random-wallpaper.timer
 ```
 
 Обои можно менять вручную:
